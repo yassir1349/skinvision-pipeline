@@ -173,11 +173,6 @@ python src/export.py
   Écart-type    : 8.46 ms
   Throughput    : 60.0 images/sec
 
----
-
-## 📈 Courbes d'entraînement
-
-![Courbes d'entraînement](training_curves.png)
 
 ---
 
