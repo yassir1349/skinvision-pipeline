@@ -5,16 +5,40 @@
 
 ---
 
-## 🎯 Résultats
+## 🎯 Results
 
-| Métrique  | Score          |
-|-----------|----------------|
-| IoU       | X.XXX ± X.XXX  |
-| Dice      | X.XXX ± X.XXX  |
-| Precision | X.XXX ± X.XXX  |
-| Recall    | X.XXX ± X.XXX  |
+### Quantitative Evaluation
 
-*(Remplace les X par tes vrais résultats après entraînement)*
+| Metric    | Score      |
+|-----------|------------|
+| **Dice**  | **0.8932** |
+| **IoU**   | **0.8139** |
+
+*Evaluated on PH2 dataset — 200 dermoscopic images (Train: 160 | Val: 40)*
+
+### Performance Interpretation
+
+| IoU Range   | Level              | Status |
+|-------------|--------------------|--------|
+| > 0.80      | Excellent          | ✅     |
+| 0.65 – 0.80 | Very Good          | ✅     |
+| 0.50 – 0.65 | Acceptable         | ⚠️     |
+| < 0.50      | Debug Required     | ❌     |
+
+**Our model achieves IoU = 0.8139 → Excellent segmentation quality** ✅
+
+### Training Curves
+
+![Training Curves](training_curves.png)
+
+**Key observations:**
+- Train and Val loss converge consistently over 10 epochs
+- No significant overfitting (train/val gap remains small)
+- Best validation loss: **0.1807** at epoch 10
+- Loss decreased from 0.56 → 0.18 (68% reduction)
+
+### Evaluation Output
+
 
 ![Résultats de segmentation](results_visualization.png)
 
@@ -118,14 +142,7 @@ python src/train.py
 # Évaluation + visualisation
 python src/evaluate.py
 --------------------------------------------
-Patients trouvés : 200
-✓ Paires valides : 200
-  Train : 160 | Val : 40
-✅ Modèle chargé : models/unet_skin.pth
 
-📊 Résultats sur Validation Set
-Dice Score : 0.8932
-IoU Score  : 0.8139
 
 #Reulstat 
 # Export ONNX
